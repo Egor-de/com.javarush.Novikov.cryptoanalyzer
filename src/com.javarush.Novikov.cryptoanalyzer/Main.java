@@ -10,8 +10,6 @@ import static java.nio.file.Path.of;
 public class Main {
     public static int key = 5;
     public static Scanner str = new Scanner(System.in);
-    public static int count_file_shifr = 0;
-    public static int count_file_Rasshifr = 0;
     public static int count_file_Brute_force_rasshif = 0;
     public static int count_dir_Brute_force_rasshif = 0;
     public static String u = "";
@@ -104,13 +102,8 @@ public class Main {
 
     public static void fail(String[] res, int a) throws IOException{
         if (a == 1) {
-            count_file_shifr = 0;
-            String r = String.valueOf('\\');
-            while (Files.exists(Path.of(u + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt"))) {
-                count_file_shifr += 1;
-            }
-            Files.createFile(Path.of(u + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt"));
-            FileOutputStream outputStream = new FileOutputStream(u + r + "Shifr" + r + "res_" + String.valueOf(count_file_shifr) + ".txt");
+            Files.createFile(Path.of(u));
+            FileOutputStream outputStream = new FileOutputStream(u);
             for (int i = 0; i < res.length; i++) {
                 byte[] buffer = (res[i] + '\n').getBytes();
                 outputStream.write(buffer);
@@ -118,13 +111,8 @@ public class Main {
             outputStream.close();
         }
         else if (a == 2){
-            count_file_Rasshifr = 0;
-            String r = String.valueOf('\\');
-            while (Files.exists(Path.of(u + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt"))) {
-                count_file_Rasshifr += 1;
-            }
-            Files.createFile(Path.of(u + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt"));
-            FileOutputStream outputStream = new FileOutputStream(u + r + "Rasshifr" + r + "res_" + String.valueOf(count_file_Rasshifr) + ".txt");
+            Files.createFile(Path.of(u));
+            FileOutputStream outputStream = new FileOutputStream(u);
             for (int i = 0; i < res.length; i++) {
                 byte[] buffer = (res[i] + '\n').getBytes();
                 outputStream.write(buffer);
@@ -166,23 +154,17 @@ public class Main {
             }
         }
         if (a == 1){
-            System.out.println("Введите место, куда бы вы хотели сохранить файл(без названия итого файла)");
+            System.out.println("Введите место, куда бы вы хотели сохранить файл");
             str = new Scanner(System.in);
             u = str.nextLine();
-            if (!Files.exists(Path.of(u + r + "Shifr"))) {
-                Files.createDirectory(Path.of(u + r + "Shifr"));
-            }
         }
         else if (a == 2){
-            System.out.println("Введите место, куда бы вы хотели сохранить файл(без названия итого файла)");
+            System.out.println("Введите место, куда бы вы хотели сохранить файл");
             str = new Scanner(System.in);
             u = str.nextLine();
-            if (!Files.exists(Path.of(u + r + "Rasshifr"))) {
-                Files.createDirectory(Path.of(u + r + "Rasshifr"));
-            }
         }
         else{
-            System.out.println("Введите место, куда бы вы хотели сохранить файл(без названия итого файла)");
+            System.out.println("Введите место, куда бы вы хотели сохранить файл");
             str = new Scanner(System.in);
             u = str.nextLine();
             while (true) {
